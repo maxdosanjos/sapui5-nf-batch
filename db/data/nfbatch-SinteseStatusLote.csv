@@ -1,0 +1,5 @@
+ID;lote_ID;atividade;descricao;textoInfo;tipo;dataHora
+becd6614-d901-5ca0-93c8-43206fa64c6a;346624;Enviar lote NF-e;Erro ao enviar o lote;Web Service não disponível no momento, lote não será enviado.;E;2019-01-07T23:59:00Z
+a9a0b20b-0b4b-5e7a-8581-5611aee5fae1;346626;Enviar lote NF-e;Erro ao enviar o lote;Web Service não disponível no momento, lote não será enviado.;E;2019-01-07T23:59:00Z
+4d4efa31-c3d1-5c59-8e6c-447288428c74;346627;Enviar lote NF-e;Erro ao enviar o lote;Web Service não disponível no momento, lote não será enviado.;E;2019-01-07T23:59:00Z
+86bb7462-20d3-5085-ba11-139f776245e2;346625;Criar lote NF-e;Lote criado com êxito;Lote criado corretamente;S;2019-01-07T23:59:00Z

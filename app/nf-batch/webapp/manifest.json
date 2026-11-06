@@ -1,0 +1,168 @@
+{
+	"_version": "1.65.0",
+	"sap.app": {
+		"id": "com.nfbatch.nfbatch",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "2.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/v4/nf-batch/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"Lote-manage": {
+					"semanticObject": "Lote",
+					"action": "manage",
+					"title": "{{appTitle}}",
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					}
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://group-2"
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.136.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.fe.templates": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.nfbatch.nfbatch.i18n.i18n",
+					"supportedLocales": [
+						"",
+						"en"
+					],
+					"fallbackLocale": ""
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"resources": {
+			"css": []
+		},
+		"routing": {
+			"config": {},
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "LotesList",
+					"target": "LotesList"
+				},
+				{
+					"pattern": "Lotes({key}):?query:",
+					"name": "LotesObjectPage",
+					"target": "LotesObjectPage"
+				}
+			],
+			"targets": {
+				"LotesList": {
+					"type": "Component",
+					"id": "LotesList",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"contextPath": "/Lotes",
+							"variantManagement": "Page",
+							"initialLoad": "Enabled",
+							"navigation": {
+								"Lotes": {
+									"detail": {
+										"route": "LotesObjectPage"
+									}
+								}
+							},
+							"controlConfiguration": {
+								"@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "ResponsiveTable",
+										"selectionMode": "Multi"
+									}
+								}
+							}
+						}
+					}
+				},
+				"LotesObjectPage": {
+					"type": "Component",
+					"id": "LotesObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"editableHeaderContent": false,
+							"contextPath": "/Lotes",
+							"controlConfiguration": {
+								"notasFiscais/@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "ResponsiveTable",
+										"selectionMode": "Multi"
+									}
+								},
+								"sinteseStatus/@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "ResponsiveTable",
+										"selectionMode": "None"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.cloud": {
+		"public": true,
+		"service": "nfbatch"
+	}
+}

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+# Variante que baixa o SAPUI5 do registro npm (não depende do CDN ui5.sap.com).
+# Uso: npm run start-local  (com o CAP rodando em http://localhost:4004)
+specVersion: "4.0"
+metadata:
+  name: com.nfbatch.nfbatch
+type: application
+framework:
+  name: SAPUI5
+  version: "1.136.24"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.fe.templates
+    - name: sap.f
+    - name: sap.ushell
+    - name: sap.insights
+    - name: themelib_sap_horizon
+server:
+  customMiddleware:
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      mountPath: /odata
+      configuration:
+        baseUri: http://localhost:4004/odata
