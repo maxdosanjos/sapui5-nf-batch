@@ -1,0 +1,16 @@
+{
+  "name": "nfbatch",
+  "version": "2.0.0",
+  "description": "Reenvio de Lotes NF-e - SAP Fiori elements (OData V4)",
+  "private": true,
+  "devDependencies": {
+    "@sap/ux-ui5-tooling": "^1",
+    "@ui5/cli": "^4",
+    "ui5-middleware-simpleproxy": "^3"
+  },
+  "scripts": {
+    "start": "fiori run --open index.html",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "start-local": "ui5 serve --config ui5-local.yaml --open index-local.html"
+  }
+}
